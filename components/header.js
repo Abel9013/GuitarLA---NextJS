@@ -10,7 +10,8 @@ export default function Header() {
     <header className={styles.header}> 
       <div className={`contenedor ${styles.barra}`} >
         <Link href="/">
-         <Image src="img/logo.svg" width={300} height={100} alt="Imagen logo guitarLA" />
+         <Image src="/img/logo.svg" width={300} height={100} alt="Imagen logo guitarLA" />
+         {/* <Image src="./img/logo.svg" width={300} height={100} alt="Imagen logo guitarLA" /> */}
         </Link>
         <nav className={styles.navegacion}>
           <Link href="/" className={router.pathname === '/' ? styles.active : ''} >

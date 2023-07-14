@@ -34,13 +34,3 @@ export async function getServerSideProps(){
     }
   }
 }
-// export async function getStaticProps(){
-//   const respuesta = await fetch(`${process.env.API_URL}/tienda-guitarras?populate=imagen`)
-//   // const respuesta = await fetch(`http://localhost:1337/api/tienda-guitarras?populate=imagen`)
-//   const { data: guitarras } = await respuesta.json()
-//   return {
-//     props: {
-//       guitarras
-//     }
-//   }
-// }

@@ -1,10 +1,8 @@
 import styles from "../styles/curso.module.css"
 export default function Curso({curso}) {
-  
-  const {contenido, imagen, titulo} = curso
-  // console.log(imagen.data.attributes.formats.medium.url);
-  // console.log(imagen.data.attributes.url);
-  // console.log(titulo);
+
+  const {contenido, imagen, titulo} = curso.attributes
+
   return (
     <section className={`${styles.curso} curso`}>
       <style jsx>{`

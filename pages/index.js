@@ -20,7 +20,7 @@ export default function Home({guitarras, posts, curso}) {
               </div>
         </main>
         <Curso
-          curso={curso.attributes}
+          curso={curso}
         />
         <section className='contenedor'>
             <h2 className='heading'>Blog</h2>

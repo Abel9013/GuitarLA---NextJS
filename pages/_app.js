@@ -1,8 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/globals.css'
+
 function MyApp({ Component, pageProps }) {
-  const [carrito, setCarrito] = useState([])
-  
+
+  const carritoLS = typeof window !== "undefined" ? JSON.parse(localStorage.getItem('carrito')) ?? [] : []
+
+  const [carrito, setCarrito] = useState(carritoLS)
+  const [paginaLista, setPaginaLista] = useState(false)
+
+  useEffect(()=>{
+    setPaginaLista(true)
+  },[] )
+  useEffect(()=>{
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    
+  }, [carrito] )
   const agregarCarrito = guitarra => {
       // Comprobar si la guitarra ya esta en el carrito...
       if(carrito.some( guitarraState =>  guitarraState.id === guitarra.id )) {
@@ -19,7 +31,7 @@ function MyApp({ Component, pageProps }) {
       } else {
           // En caso de que el articulo no exista, es nuevo y se agrega
           setCarrito([...carrito, guitarra]);
-          localStorage.setItem('carrito', JSON.stringify( carrito ));
+          localStorage.setItem('carrito', JSON.stringify(carrito));
       }
   }
 
@@ -39,12 +51,12 @@ function MyApp({ Component, pageProps }) {
     setCarrito(carritoActualizado)
     window.localStorage.setItem('carrito', JSON.stringify( carrito ));
   }
-  return <Component {...pageProps} 
+  return paginaLista ? <Component {...pageProps} 
       agregarCarrito = {agregarCarrito}
       carrito={carrito}
       eliminarProducto={eliminarProducto}
       actualizarCantidad={actualizarCantidad}
-  />
+  /> : null
 }
 
 export default MyApp
